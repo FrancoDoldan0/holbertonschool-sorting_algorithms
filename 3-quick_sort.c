@@ -10,32 +10,32 @@
  */
 int partition(int *array, int start, int end, size_t size)
 {
-	int bater = array[end];
-	int count = (start - 1);
-	int i, temp;
+    int bater = array[end];
+    int count = (start - 1);
+    int i, temp;
 
-	for (i = start; i < end; i++)
-	{
-		if (array[i] <= bater)
-		{
-			count++;
-			if (count < i)
-			{
-				temp = array[count];
-				array[count] = array[i];
-				array[i] = temp;
-				print_array(array, size);
-			}
-		}
-	}
-	if (array[end] < array[count + 1])
-	{
-		temp = array[count + 1];
-		array[count + 1] = array[end];
-		array[end] = temp;
-		print_array(array, size);
-	}
-	return (count + 1);
+    for (i = start; i < end; i++)
+    {
+        if (array[i] <= bater)
+        {
+            count++;
+            if (count < i)
+            {
+                temp = array[count];
+                array[count] = array[i];
+                array[i] = temp;
+                print_array(array, size);
+            }
+        }
+    }
+    if (array[end] < array[count + 1])
+    {
+        temp = array[count + 1];
+        array[count + 1] = array[end];
+        array[end] = temp;
+        print_array(array, size);
+    }
+    return (count + 1);
 }
 
 /**
@@ -47,14 +47,14 @@ int partition(int *array, int start, int end, size_t size)
  */
 void sort_recursion(int *array, int start, int end, size_t size)
 {
-	int bater = 0;
+    int bater = 0;
 
-	if (start < end)
-	{
-		bater = partition(array, start, end, size);
-		sort_recursion(array, start, bater - 1, size);
-		sort_recursion(array, bater + 1, end, size);
-	}
+    if (start < end)
+    {
+        bater = partition(array, start, end, size);
+        sort_recursion(array, start, bater - 1, size);
+        sort_recursion(array, bater + 1, end, size);
+    }
 }
 
 /**
@@ -64,5 +64,5 @@ void sort_recursion(int *array, int start, int end, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
-	sort_recursion(array, 0, size - 1, size);
+    sort_recursion(array, 0, size - 1, size);
 }
